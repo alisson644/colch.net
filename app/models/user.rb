@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :rooms
+  has_many :rooms, :dependent => :destroy
+  has_many :reviews, :dependent => :destroy
 
   scope :confirmed, -> {where('confirmed_at IS NOT NULL')}
   

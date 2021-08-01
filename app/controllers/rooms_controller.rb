@@ -6,21 +6,22 @@ class RoomsController < ApplicationController
 
 
   def index
-    @rooms = Room.all
+    @rooms = Room.all.most_recent
   end
 
   def show
   end
 
   def new
-    @room = Room.new
+    @room = current_user.rooms.build
   end
 
   def edit
+    @room = current_user.rooms.find(params[:id])
   end
 
   def create
-    @room = Room.new(room_params)
+    @room = current_user.rooms.build(room_params)
 
     if @room.save
       redirect_to @room, :notice => t('flash.notice.room_created')
@@ -30,10 +31,18 @@ class RoomsController < ApplicationController
   end
 
   def update
-    if @room.update(room_params)
-      redirect_to @room, :notice => t('flash.notice.room_updated')
-    else
-      render :action => "edit"
+    @room = current_user.rooms.find(params[:id])
+
+    respond_to do |format|
+       if @room.update(room_params)
+          format.html { redirect_to @room,
+            notice: 'Room was successfully updated.' }
+          format.json { head :no_content }
+       else
+          format.html { render action: "edit" }
+          format.json { render json: @room.errors,
+            status: :unprocessable_entity }
+       end
     end
   end
 
@@ -50,6 +59,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:title, :location, :description)
+      params.require(:room).permit(:title, :location, :description,)
     end
 end

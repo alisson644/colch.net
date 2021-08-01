@@ -1,10 +1,18 @@
 pt-BR:
   rooms:
+    room:
+      owner_html: '&mdash; %{owner} (%{when})'
+      edit: 'Editar'
+      destroy: 'Remover'
+    index:
+      title: 'Quartos disponíveis'
     new:
       title: Cadastro
     edit: 
       title: Editar Quarto
     show:
+      owner_html: '&mdash; %{owner} (%{when})'
+      destroy: 'Remover'
       title: "Quarto: %{title}"
       edit: 'Editar Quarto'
       location: 'Localização: %{location}'
@@ -81,6 +89,10 @@ pt-BR:
     submit:
       user_session:
         create: 'Entrar'
+  
+  dialogs:
+    destroy: 'Você tem certeza que quer remover?'
+
   flash:
     notice:
       signed_in: 'Login efetuado com sucesso!'

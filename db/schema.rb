@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_20_140140) do
+ActiveRecord::Schema.define(version: 2021_08_01_111745) do
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "room_id", null: false
+    t.integer "points"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["room_id"], name: "index_reviews_on_room_id"
+    t.index ["user_id", "room_id"], name: "index_reviews_on_user_id_and_room_id", unique: true
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
 
   create_table "rooms", force: :cascade do |t|
     t.string "title"
@@ -19,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_07_20_140140) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
+    t.integer "reviews_count"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
 
@@ -35,4 +47,6 @@ ActiveRecord::Schema.define(version: 2021_07_20_140140) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "reviews", "rooms"
+  add_foreign_key "reviews", "users"
 end
