@@ -6,10 +6,14 @@ class RoomsController < ApplicationController
 
 
   def index
-    @rooms = Room.all.most_recent
+    @rooms = Room.all.most_recent.map do |room|
+      RoomPresenter.new(room, self, false)
+    end
   end
 
   def show
+    room_model = Room.find(params[:id])
+    @room = RoomPresenter.new(room_model, self)  
   end
 
   def new
@@ -55,6 +59,11 @@ class RoomsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_room
       @room = Room.find(params[:id])
+      
+      if user_signed_in?
+        @user_review = @room.reviews.
+        find_or_initialize_by(user_id: current_user.id)
+      end
     end
 
     # Only allow a list of trusted parameters through.
