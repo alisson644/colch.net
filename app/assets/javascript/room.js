@@ -19,4 +19,6 @@ $(function () {
         addClass(icon_class).
         css('color', color);
   };
+
+  
 });
