@@ -12,6 +12,7 @@ module Colchonet
     config.load_defaults 6.0
     config.i18n.default_locale = :'pt-BR'
     config.time_zone = 'Brasilia'
+    config.assets.paths << Rails.root.join("vendor", "assets", "fonts")
 
 
 
