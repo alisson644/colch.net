@@ -23,6 +23,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem "font-awesome-rails"
+gem 'friendly_id'
+
 
 
 # Use Active Storage variant

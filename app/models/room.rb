@@ -1,10 +1,15 @@
 class Room < ApplicationRecord
+  extend FriendlyId
+
   has_many :reviews, :dependent => :destroy
   has_many :reviewed_rooms, :through => :reviews, :source => :room
   belongs_to :user
   
   validates_presence_of :title, :location
+  validates_presence_of :slug
   validates_length_of :description, :minimum => 30, :allow_blank => false
+
+  friendly_id :title, :use => [:slugged, :history]
 
   scope :most_recent, -> {order('created_at DESC')}
 
