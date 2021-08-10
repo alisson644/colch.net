@@ -19,10 +19,10 @@ class Room < ApplicationRecord
   end
 
   def self.search(query)
-    if query[0].present?
+    if query.present?
       where('location LIKE :query OR
              title LIKE :query OR
-             description LIKE :query', :query => "%#{query[0]}%")
+             description LIKE :query', :query => "%#{query}%")
     else
       most_recent
     end

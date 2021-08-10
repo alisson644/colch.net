@@ -1,4 +1,11 @@
 pt-BR:
+  views:
+    pagination:
+      first: "&laquo; Primeira"
+      last: "Última &raquo;"
+      previous: "&lsaquo; Anterior"
+      next: "Próxima &rsaquo;"
+      truncate: "..."
   rooms:
     review:
       login_to_review: 'Faça o login para avaliar quartos'
@@ -106,5 +113,6 @@ pt-BR:
     notice:
       signed_in: 'Login efetuado com sucesso!'
       signed_out: 'Logout efetuado com sucesso. Até logo!'
+      room_created: 'Quarto Criado com sucesso!'
     alert:
       needs_login: 'Para continuar, Você precisa estar logado'

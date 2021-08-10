@@ -138,10 +138,21 @@ form {
       @extend .padded_flash;
       background-color: #F2DEDE;
       }
+.pagination{
+  margin: 20px 0;
+}
+
+.pagination span {
+  padding: 5px;
+  margin: 0 3px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  @include shadow(#ccc, 0, 3px, 6px)
+}
       
-      $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
-      @import '@fortawesome/fontawesome-free/scss/fontawesome';
-      @import '@fortawesome/fontawesome-free/scss/solid';
-      @import '@fortawesome/fontawesome-free/scss/regular';
-      @import '@fortawesome/fontawesome-free/scss/brands';
-      @import '@fortawesome/fontawesome-free/scss/v4-shims';
+  $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
+  @import '@fortawesome/fontawesome-free/scss/fontawesome';
+  @import '@fortawesome/fontawesome-free/scss/solid';
+  @import '@fortawesome/fontawesome-free/scss/regular';
+  @import '@fortawesome/fontawesome-free/scss/brands';
+  @import '@fortawesome/fontawesome-free/scss/v4-shims';
