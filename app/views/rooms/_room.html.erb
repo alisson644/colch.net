@@ -1,5 +1,5 @@
   <article class="room">
-    <h2><%= link_to room.title, room.route %></h2> 
+    <h2><%= link_to highlight(room.title, "#{@search_query[0]}"), room.route %></h2> 
 
     <%= render :partial => 'review', :locals => {:room => room} %>
 
@@ -9,11 +9,11 @@
     :when => l(room.created_at, :format => :short) %></span>
     <p>
       <span class="location">
-      <%= link_to room.location,
+      <%= link_to highlight(room.location, "#{@search_query[0]}"),
                   "https://maps.google.com/?q=#{room.location}",
                   :target => :blank %></span>
     </p>
-    <p><%= room.description %></p>
+    <p><%= highlight(room.description, "#{@search_query[0]}") %></p>
     <% if belongs_to_user(room)%>
       <ul>
         <li><%= link_to t('.edit'), edit_room_path(room.route) %></li>

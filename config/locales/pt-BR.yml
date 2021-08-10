@@ -11,6 +11,9 @@ pt-BR:
       destroy: 'Remover'
     index:
       title: 'Quartos disponíveis'
+      search_results: 'Resultado da busca'
+    search:
+      search_for: 'Buscar por...'
     new:
       title: Cadastro
     edit: 

@@ -6,7 +6,11 @@ class RoomsController < ApplicationController
 
 
   def index
-    @rooms = Room.all.most_recent.map do |room|
+    @search_query = [params[:q]]
+
+    rooms = Room.search(@search_query)
+
+    @rooms = rooms.most_recent.map do |room|
       RoomPresenter.new(room, self, false)
     end
   end
@@ -68,6 +72,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:title, :location, :description,)
+      params.require(:room).permit(:title, :location, :description,:q)
     end
 end
