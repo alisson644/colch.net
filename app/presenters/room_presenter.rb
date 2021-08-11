@@ -8,6 +8,18 @@ class RoomPresenter
       @show_form = show_form
     end
 
+    def picture_url
+      @room.picture_url
+    end
+
+    def thumb_url
+      @room.picture.thumb.url
+    end
+
+    def has_picture?
+      @room.picture?
+    end
+
     def can_review?
       @context.user_signed_in?
     end

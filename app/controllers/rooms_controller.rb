@@ -40,7 +40,7 @@ class RoomsController < ApplicationController
   end
 
   def update
-    @room = current_user.rooms.find(params[:id])
+    @room = current_user.rooms.friendly.find(params[:id])
 
     respond_to do |format|
        if @room.update(room_params)
@@ -73,6 +73,6 @@ class RoomsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def room_params
-      params.require(:room).permit(:title, :location, :description,:q)
+      params.require(:room).permit(:title, :location, :description,:q, :picture)
     end
 end

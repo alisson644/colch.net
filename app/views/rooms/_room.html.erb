@@ -1,18 +1,21 @@
   <article class="room">
     <h2><%= link_to highlight(room.title, @search_query), room.route %></h2> 
-
     <%= render :partial => 'review', :locals => {:room => room} %>
-
     <span class="created">
-    <%= t '.owner_html', 
-    :owner => room.user.full_name,
-    :when => l(room.created_at, :format => :short) %></span>
+      <%= t '.owner_html', 
+      :owner => room.user.full_name,
+      :when => l(room.created_at, :format => :short) %></span>
     <p>
       <span class="location">
       <%= link_to highlight(room.location, @search_query),
                   "https://maps.google.com/?q=#{room.location}",
                   :target => :blank %></span>
     </p>
+    <% if room.has_picture? %>
+      <%= link_to(image_tag(room.thumb_url), room.picture_url) %>
+    <% end %>
+    
+
     <p><%= highlight(room.description, @search_query) %></p>
     <% if belongs_to_user(room)%>
       <ul>
